@@ -12,15 +12,18 @@ struct ProductDetailView: View {
     @Perception.Bindable var store: StoreOf<ProductDetailFeature>
     
     var body: some View {
-        VStack {
-            Spacer()
-            
-            Text(store.item)
-                .font(.headline)
-            
-            Spacer()
+        WithPerceptionTracking {
+            VStack {
+                Spacer()
+                Text(store.item.icon)
+                
+                Text(store.item.name)
+                    .font(.headline)
+                
+                Spacer()
+            }
+            .padding()
+            .navigationTitle("Product Details")
         }
-        .padding()
-        .navigationTitle("Product Details")
     }
 }

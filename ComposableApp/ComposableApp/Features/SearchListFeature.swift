@@ -14,11 +14,13 @@ struct SearchListFeature {
     @ObservableState
     struct State: Equatable {
         var searchText = ""
-        var items = ["banana","orange","grapes","pine apples"]
+        let items: [Fruit] = ProductData.fruits
+        var results: [Fruit] = []
+        
         var isLoading = false
         var errorMessage: String?
-        var selectedItem: String?
-        var results: [String] = []
+        var selectedItem: Fruit?
+        
         @Presents var route: Destination.State?
         
         init() {
@@ -29,8 +31,8 @@ struct SearchListFeature {
     enum Action: BindableAction {
         case binding(BindingAction<State>)
         case searchButtonTapped
-        case searchResponseFetched([String])
-        case itemTapped(String)
+        case searchResponseFetched([Fruit])
+        case itemTapped(Fruit)
         case route(PresentationAction<Destination.Action>)
     }
     
@@ -67,12 +69,12 @@ struct SearchListFeature {
                 
                 return .run { send in
                     try await Task.sleep(for: .seconds(1))
-                    let filteredItems: [String]
+                    let filteredItems: [Fruit]
                     
                     if query.isEmpty {
                         filteredItems = items
                     } else {
-                        filteredItems = items.filter{ $0.localizedCaseInsensitiveContains(query) }
+                        filteredItems = items.filter{ $0.name.localizedCaseInsensitiveContains(query) }
                     }
                     await send(.searchResponseFetched(filteredItems))
                 }

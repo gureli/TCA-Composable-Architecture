@@ -17,14 +17,16 @@ struct SearchListView: View {
                 let list = store.results
                 ZStack {
                     VStack(spacing: 12) {
-                        TextField("Search products", text:  $store.searchText)
-                            .textFieldStyle(.roundedBorder)
-                        
-                        Button("Search") {
-                            store.send(.searchButtonTapped)
+                        HStack {
+                            TextField("Search products", text:  $store.searchText)
+                                .textFieldStyle(.roundedBorder)
+                            
+                            Button("Search") {
+                                store.send(.searchButtonTapped)
+                            }
+                            .buttonStyle(.borderedProminent)
                         }
-                        .buttonStyle(.borderedProminent)
-
+                        
                         listSection(for: list)
                     }
                     .navigationDestination(item: $store.scope(state: \.route?.detail,
@@ -44,11 +46,17 @@ struct SearchListView: View {
         }
     }
     
-    @ViewBuilder private func listSection(for list: [String])-> some View {
+    @ViewBuilder private func listSection(for list: [Fruit])-> some View {
         List {
             ForEach(list, id: \.self) { item in
-                Button(item) {
-                    store.send(.itemTapped(item))
+                HStack {
+                    Text(item.icon)
+                    
+                    Button(item.name) {
+                        store.send(.itemTapped(item))
+                    }
+                    
+                    Spacer()
                 }
             }
         }

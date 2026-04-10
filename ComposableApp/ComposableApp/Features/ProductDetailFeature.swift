@@ -13,7 +13,7 @@ struct ProductDetailFeature {
     
     @ObservableState
     struct State: Equatable {
-        var item: String
+        var item: Fruit
     }
     
     enum Action {
