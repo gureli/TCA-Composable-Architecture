@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A04C29A2F890B0600181E79 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 6A04C2992F890B0600181E79 /* ComposableArchitecture */; };
 		6A66E7842F87B4390087D049 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 6A66E7832F87B4390087D049 /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A04C29A2F890B0600181E79 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +152,7 @@
 			);
 			name = ComposableAppTests;
 			packageProductDependencies = (
+				6A04C2992F890B0600181E79 /* ComposableArchitecture */,
 			);
 			productName = ComposableAppTests;
 			productReference = 6A66E75F2F87B2610087D049 /* ComposableAppTests.xctest */;
@@ -652,6 +655,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6A04C2992F890B0600181E79 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6A66E77C2F87B27D0087D049 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
 		6A66E7802F87B3BD0087D049 /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6A66E77C2F87B27D0087D049 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
